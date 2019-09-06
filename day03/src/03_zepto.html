@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/zepto.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/touch.js"></script>
+    <style>
+      /* 滑动：禁止屏滑动 */
+      *{touch-action: none}
+      .box{
+          width: 300px;
+          height:300px;
+          position: absolute;
+          left:30px;
+          top:30px;
+          background-color: #f44;
+      }
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+       $(".box").swipe(function(){
+           console.log("0:滑动");
+       })
+       $(".box").swipeLeft(function(){
+           console.log("1:左滑动");
+       })
+       $(".box").swipeRight(function(){
+           console.log("2:右滑动");
+       })
+       $(".box").swipeUp(function(){
+           console.log("3:上滑动");
+       })
+       $(".box").swipeDown(function(){
+           console.log("4:下滑动");
+       })
+    
+    </script>
+</body>
+</html>

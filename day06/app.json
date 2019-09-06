@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/seach/seach",
+    "pages/backAudio/backAudio",
+    "pages/main/main",
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/loginCount/loginCount"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

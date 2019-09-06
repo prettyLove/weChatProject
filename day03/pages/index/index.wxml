@@ -1,0 +1,56 @@
+<!-- indicator-dots 是否显示面板指示点
+autoplay       是否自动切换
+interval       切换时间
+duration       滑动动画时长 -->
+<!-- <view class='container'>
+    <swiper class='slider'
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+</view>
+
+<view class='slider'>
+  <swiper autoplay="{{true}}" interval="{{4000}}" indicator-dots="{{indicatorDots}}">
+     <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner1.png"></image>
+     </swiper-item>
+       <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner2.png" ></image>
+      </swiper-item>
+       <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner3.png"></image>
+     </swiper-item>
+            <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner4.png" ></image>
+     </swiper-item>
+  </swiper>
+</view> -->
+
+<view class='slider'>
+   <swiper autoplay="{{autoplay}}" interval="{{interval}}" indicator-dots="{{indicatorDots}}" >
+      <swiper-item  wx:for="{{list}}" wx:key="index">
+        <image src="{{item}}" class='swiper-image'></image>
+      </swiper-item>
+    
+</swiper>
+</view>
+<!-- 九宫格 -->
+<view class='index-nva'>
+   <view class='nav-item' wx:for="{{nvaList}}" wx:key="index">
+      <image src="{{item.img_url}}" lazy-load='true' mode='aspectFill'></image>
+      <text>{{item.title}}</text>
+   </view>
+</view>
+<view class='index-tab'>
+    <view class='left' wx:for="{{tablist}}" wx:key="index">
+        <image src='{{item.img_url}}' laze-lazy-load='true'></image>
+    </view>
+</view>

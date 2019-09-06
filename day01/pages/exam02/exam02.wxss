@@ -1,0 +1,11 @@
+/* pages/exam02/exam02.wxss */
+.container{
+  padding-top: 25px;
+  background-color: #eee;
+}
+.container input{
+  margin-top: 15px;
+}
+.container button{
+  margin-top: 15px;
+}

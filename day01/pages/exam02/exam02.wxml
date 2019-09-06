@@ -1,0 +1,14 @@
+<!--pages/exam02/exam02.wxml-->
+<view class='container'>
+  <text>微信小程序-用户注册</text>
+  <form>
+    <input placeholder='请输入用户名'></input>
+    <input placeholder='请输入密码'></input>
+    <button>注册</button>
+  </form>
+  <!-- 小程序图片标准写法 -->
+  <image src='/pages/img/img1.png' lazy-load='true' mode='aspectFill'></image>
+  <text selectable='true'> html css javascript dom bom </text>
+  <text decode='true'>js 新书 &lt;&lt;javascript权威指南&gt;&gt;</text>
+</view>
+

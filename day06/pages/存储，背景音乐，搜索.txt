@@ -1,0 +1,66 @@
+小程序--全局储存
+
+存储方式一：局部储存
+data:{} data中储存数据在当前组件任意方法调用，其他组件不能共享
+获取局部存储：this.data.属性
+修改局部存储：this.setData({属性：值})
+
+存储方式二：全局存储
+哪些数据都要全局储存：ajax请求服务器路径http://127.0.0.1:3000
+
+2.2小程序-全局储存--操作
+(1).创建全局共享数据
+ app.js
+ App({
+   globalData:{属性名：属性值}
+ })
+(2)获取全局共享数据
+ const app=getApp()
+ *加载全局对象
+ var 数据=app.alobalData数据名
+ *获取全局共享数据
+(3)修改全局共享数据
+(4)
+
+ 示例：
+在全局组件中
+  app.js
+  App({
+    globalData:{属性名：属性值}
+  })
+在其他组件中获取
+  const app=getApp();
+  var url=app.globalData.baseUrl;
+  this.setData({baseUrl:url});
+  <image src="{{baseUrl}}img/banner1.png"/>
+
+  2.3小程序--背景音乐
+  小程序后台音乐播放器(背景音乐)
+  小程序要求同一时间段只能播放一个背景音乐
+  当其他小程序占用后台音乐播放器，当前音乐停止退出
+
+ (1)-播放背景音乐
+  wx.playBackgroundAudio({})
+  dataUrl:音乐列表
+  title:音乐标题
+  #小程序支持音频格式有mp3 wav aac m4a...
+  #音乐列表中文件一定保存服务器上
+  (2)-暂停播放背景音乐
+  wx.pauseBackgroundAudio();
+  (3)-停止播放背景音乐
+  wx.stopBackgroundAudio();
+  常见错误：
+  (1)闪退：音频文件不存在
+
+  2.4:小程序--学子商城--搜索商品
+  --分析：当用户输入某种商品部分名称，我们服务器返回包含次部分名称商品列表
+  -数据库哪张表，部分名称商品列表 xz_laptop:[id;title;price]
+  -app.js
+  (1)参数  pno=1  pagesize=4
+  (1)sql   select if,title,price,from xz_laptop where title like concat('%',?,'%');
+  (1)json
+  # %表示通配符  表示0个或多个字符
+  #concat 拼接字符串  concat('%',?,'%')-》'%?%'
+  -小程序search作业
+  2.x:小程序--学子商城--昨天上传
+  2.x:微信公总号--聊天机器人

@@ -1,0 +1,38 @@
+<!--pages/dataview01/dataview01.wxml-->
+<view wx:if='{{}}'></view>
+<view>
+   <text>循环雇员数据</text>
+   <!-- 循环 -->
+   <view wx:for="{{list}}" wx:key="index">
+      <text>{{item.id}}</text>
+      <text>{{item.name}}</text>
+      <text>{{item.salay}}</text>
+   </view>
+   <!-- 修改默认值 -->
+   <view wx:for="{{list}}" wx:for-item="obj" wx:for-index="i" wx:key="key">
+       <text>{{obj.id}}</text>
+       <text>{{obj.name}}</text>
+       <text>{{obj.salay}}</text>
+     
+   </view>
+   <text>数值的判断</text>
+   <view wx:if="{{num==19}}">等于19</view>
+   <text>数组判断</text>
+   <view wx:if="{{list.length>0}}">数组长度大于0，数据存在</view>
+   <text>多个条件判断</text>
+   <view wx:if="{{num<10}}">小与10</view>
+   <view wx:elif="{{num==10}}">等于10</view>
+   <view wx:else="{{num>10}}">大于10</view>
+</view>
+
+   <text>练习题，判断购物车</text>
+   <view wx:if="{{listcart.length>0}}">
+      <view wx:for="{{listcart}}" wx:key="index">
+          <text>{{item.id}}</text>
+          <text>{{item.uid}}</text>
+          <text>{{item.price}}</text>
+      </view>
+     </view>
+   <view wx:else>>当前购物车空空的，请先去购物吧！</view>
+  
+

@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/exam05/exam05",
+    "pages/exam03/exam03",
+    "pages/exam02/exam02",
+    "pages/exam01/exam01",
+    "pages/index/index",
+    "pages/logs/logs"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

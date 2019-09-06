@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/zepto.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/touch.js"></script>
+</head>
+<body>
+    <h3>zepto</h3>
+    <div id="box1">按一下</div>
+    <div id="box2">长按一下</div>
+    <script>
+    //  1:获取元素box1绑定事件tab
+    //  2:当发生tab事件将box1文本改按了一下
+    $("#box1").tap(function(){
+      $(this).html("按了一下，别再按了！");
+    })
+    //3:长按300ms
+    $("#box2").longTap(function(){
+        $(this).html("超过300ms了")
+    })
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<!--pages/exam01/exam01.wxml-->
+<text>跳转练习</text>
+<view bindtap='jump01'>关闭的跳转</view>
+<view bindtap='jump02'>保留的跳转</view>
+<view bindtap='jump03'>关闭的跳转，但是可以调到tabbar中</view>
+<text>发送ajax请求</text>
+<view bindtap='getAjax'>
+    点击此处发送请求
+</view>

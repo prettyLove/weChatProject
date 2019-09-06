@@ -1,0 +1,6 @@
+/* pages/loginCount/loginCount.wxss */
+.bgaudio{display: flex}
+.bgaudio .image{
+  width:50%;
+  height: 50%
+}

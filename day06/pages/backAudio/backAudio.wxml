@@ -1,0 +1,7 @@
+<!--pages/backAudio/backAudio.wxml-->
+<text>背景音乐播放</text>
+<button bindtap='play'>播放</button>
+<button bindtap='pause'>暂停</button>
+<view class='bgaudio'>
+   <image src='{{baseUrl+statuimg}}' bindtap='onTap' class='image'></image>
+</view>

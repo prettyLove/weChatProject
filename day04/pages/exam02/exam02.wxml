@@ -1,0 +1,2 @@
+<!--pages/exam02/exam02.wxml-->
+<text>{{id}}</text>

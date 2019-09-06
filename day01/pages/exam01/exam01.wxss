@@ -1,0 +1,8 @@
+/* pages/exam01/exam01.wxss */
+.container{
+  border:1px solid red;
+}
+/* .container image{
+  width: 100%;
+  height: 100%;
+} */

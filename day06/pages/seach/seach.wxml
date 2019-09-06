@@ -1,0 +1,21 @@
+<!-- 商品搜索练习 -->
+<view class='container'>
+  <!--表单-->
+  <view class='card'>
+    <form bindsubmit='searchKey'>
+      <view class='cell-item'>
+        <input type='text' placeholder='请输入搜索商品的名称' name="key"></input>
+      </view>
+      <view class='cell-item'>
+        <button form-type='submit'>GO</button>
+      </view>
+    </form>
+  </view>
+  <!--搜索结果-->
+  <view class='card'>
+  <view wx:if="{{list.length>0}}">
+     <view wx:for="{{list}}" wx:key="index">{{item.title}}</view>
+  </view>
+  <view wx:else>未找到您喜欢的商品:</view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<!--pages/exam01/exam01.wxml-->
+<text>pages/exam01/exam01.wxml</text>
+<view wx:for="{{list}}" wx:key="{{index}}">
+  <text bindtap='tapId' data-id="{{item.id}}">{{item.id}}</text>
+  <text>{{item.name}}</text>
+</view>

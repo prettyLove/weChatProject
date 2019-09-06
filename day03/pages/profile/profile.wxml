@@ -1,0 +1,6 @@
+<!--pages/profile/profile.wxml-->
+<text>个人中心</text>
+<view bindtap='handle03'>
+   <view bindtap='handle01'>tap me 支持事件冒泡，触发本身和父元素</view>
+   <view catchtap='handle02'>tap me 不支持事件冒泡，仅触发本身</view>
+</view>

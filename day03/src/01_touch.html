@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .container{
+           width: 300px;
+           height:300px;
+           border: 1px solid #ccc;
+           overflow: hidden;
+       }
+       .one{
+           width: 100px;
+           height:100px;
+           margin:10px;
+           background-color: red;
+       }
+    </style>
+</head>
+<body>
+    <h3>移动端事件</h3>
+    <div class="container">
+        <div class="one">one</div>
+    </div>
+    <script>
+        var one=document.querySelector(".one");
+        one.addEventListener("touchstart",function(){
+           console.log("1：触碰开始");
+        })
+        one.addEventListener("touchmove",function(){
+            console.log("2:滑动中");
+        })
+        one.addEventListener("touchend",function(){
+            console.log("3:触碰结束");
+        })
+    </script>
+</body>
+</html>

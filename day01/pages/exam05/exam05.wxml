@@ -1,0 +1,12 @@
+<!--pages/exam05/exam-5.wxml-->
+<text>微信小程序</text>
+<view class='container'>
+<!-- 默认循环中当前对象为item当前下标为index,修改默认值  wx:for-item="新值" wx:for-index="" -->
+   <view wx:for="{{list}}" wx:key="index">
+   {{item.id}}
+   {{item.name}}
+   {{item.sex}}
+   {{item.age}}
+   {{item.salary}}
+   </view>
+</view>

@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/logs/logs",
+    "pages/lifecycle/lifecycle",
+   
+    "pages/home/home",
+    "pages/list/list",
+    "pages/dataview01/dataview01",
+    "pages/index/index",
+    "pages/cantact/cantact",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f66",
+    "navigationBarTitleText": "学子商城",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "pages/img/home.png",
+        "selectedIconPath": "pages/img/home-active.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "消息",
+        "iconPath": "pages/img/message.png",
+        "selectedIconPath": "pages/img/message-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "pages/img/profile.png",
+        "selectedIconPath": "pages/img/profile-active.png"
+      },{
+        "pagePath": "pages/logs/logs",
+        "text": "联系",
+        "iconPath": "pages/img/contact.png",
+        "selectedIconPath": "pages/img/contact-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

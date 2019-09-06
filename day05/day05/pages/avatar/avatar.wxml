@@ -1,0 +1,4 @@
+<view>上传头像
+   <button bindtap='myAvatar'>点击上传</button>
+</view>
+<image src='{{"http://127.0.0.1:3000/"+img_url}}' wx:if='{{img_url.length>0}}'></image>

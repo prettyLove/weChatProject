@@ -1,0 +1,2 @@
+<!--pages/main/main.wxml-->
+<text>存储模拟：{{loginCount}}</text>

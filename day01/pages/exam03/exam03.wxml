@@ -1,0 +1,15 @@
+<!--pages/exam03/exam03.wxml-->
+<view class='container'>
+  <view>显示数据</view>
+  <text>{{str1}}</text>
+  <view>{{num1}}</view>
+  <view>{{num2}}</view>
+  <view>{{str1}}</view>
+  <view>{{n1}}</view>
+  <view>显示对象与数组</view>
+  <view>{{obj1.id}}{{obj1.name}}</view>
+  <view>{{list[0].id}}{{list[1].name}}</view>
+  <view>创建循环</view>
+  <view wx:for="{{list}}" wx:key="index">{{item.id}}{{item.name}}</view>
+</view>
+
