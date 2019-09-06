@@ -1,0 +1,171 @@
+2.1：组件间的跳转--两类(标签、程序)
+跳转：关闭或者保留当前组件，并且打开新组件
+方式一：标签
+<navigator url="组件路径">文字</navigator>
+#建议使用组件绝对路径
+实例：
+<navigator url="/pages/index/index">..</navigator>
+#如果组件已经定义在tabbar中，不能通过标签方式跳转
+#标签跳转的方式：属于保留跳转，即能返回
+
+(1)wx.redirectTo({url:"组件路径"})   --(最常见)
+   #关闭(卸载)当前组件并且打开新组件，特点：不能跳转到tabbar中定义的组件
+(2)wx.navigateTo({url:"组件路径"})
+   #保留当前组件并且打开一个新组件，特点：不能跳转到tabbar中定义的组件
+(3)wx.reLaunchTo({url:"组件路径"})
+   #关闭当前组件并且打开一个新的组件，特点：能跳转到tabbar中定义的组件
+
+小结：在使用跳转方式依据顺序
+--如果有标签，首先是会用标签<navigator></navigator>
+--如果没有标签，使用保留跳转wx.navigateTo({})
+
+方式二：程序
+
+
+2：小程序--ajax
+小程序中显示大量数据，数据保存服务器
+小程序解决方法：通过ajax请求获取服务器上数据并保存显示
+wx.request({....})
+url:   请求服务器程序地址
+method 请求方式 get  post
+data:  发送请求数据给服务器端程序
+success(res=>{....}):请求成功回调函数,res服务器返回结果，请求失败
+fail:  请求失败
+complete:无论请求成功或者失败都会回调函数
+#注意事项：
+小程序对发送ajax请求有要求，要求服务器的域名要合法(互联网中心注册、缴费的)而且服务器的协议要使用https(加密),
+不支持http协议。
+开发阶段：禁止以上验证
+点击小程序开发工具-》设置菜单-》项目设置-》【*】不校验合法域名，不验证https证书
+
+get 和post的区别
+get:语义上：       客户端获取服务器端的数据(商品列表，用户列表)
+    发送数据量：   最低标准 1kb
+    发送数据方式： 请求url地址添加 http://127.0.0.1/index?id=1
+    安全：         非常不安全
+
+post：语义上：      客户端要想服务器端发数据(如注册用户，添加商品)
+      发送数据量：  没限制
+      发送数据方式：请求主体中
+      安全：        不安全
+2.x:小程序---美食列表（重点） 在day04中
+
+分析服务器端程序app.js
+#服务器端session丢失
+(1)如果你添加路由session丢失，服务器端node.js造成
+server.user(session({
+  secret:"128位字符串 "，  //配置秘钥
+  resave:true   //每次请求都更新数据
+  saveUninitialized:true
+  (2)名称冲突
+  登录保存session: req.session.id=3;
+  将商品添加购物车   var id=req,session.id
+  原因：session对象自有属性id128位加密码
+  解决：req.session.uid     var uid=req.session.uid
+  (3)拼写错误
+}))
+
+美食列表
+2.1小程序--加载数据时如果数据还未显示，则显示加载动画效果，加载动画作用：提升用户体验
+--创建加载动画组件
+wx.showLoading({title:"正在加载数据..."})；
+-卸载加载邓华组件
+wx.hideLoading();
+
+
+
+3.1小程序--上传文件(重点)
+在软件项目中将客户端某一些文件上传到服务器指定文件夹下，这是一种常见操作。
+示例：上传头像，微信文件，发送邮件(附件)；
+
+3.2小程序上传文件注意事项
+(1)用户可以上传任意类型文件 1.jpg/mp3/docx/mp4...
+   可以限制用户上传文件的类型：比如只允许上传图片
+(2)用户默认情况下可以上传任意大小的文件
+   可以限制用户上传文件的大小：2MB
+(3)用户上传的文件名一定要重新修改后再保存到服务器中
+   目的：防止名字冲突
+     如：用户a[11.jpg]  ->上传到服务器--[/upload]/...jpg
+       ：用户b[11.jpg]  ->上传到服务器--[/upload]/...jpg
+       新名字：时间戳+随机数+文件后缀  
+(4)上传文件操作=将临时文件  移动 upload
+3.3:小程序注意事项-工作中常见错误
+(1)目录不正确
+    1.1-node.js 创建目录只能帮创建一次
+     upload/1.jpg  程序自动创建upload
+     upload/2019/1.jpg    出错
+
+    1.2-相对路径容易出错
+        var desFile='upload/1.jpg'  出错
+        var desFile=_dirname+'upload/1.jpg'  
+        #_dirname 绝对路径
+(2)目录中创建文件权限
+   公司服务器不是window，用的是liux服务器(90%>)
+    2.1 严格区分大小写字母：[表小写字母+大写]
+    2.2 有一目录不允许403-找公司运维工程师 开 /upload 权限上传文件权限
+
+3.4小程序 -上传文件 --服务器端
+  -下载并且安装第三方模块multer 模块下载命令：npm i multer --save
+  -加载第三方模块，并且创建对象
+  const multer=require("multer");
+  var upload=multer({dest:"upload/"});
+  -处理上传请求
+  server.post("/uploadFile",upload.single("mypic"),(req,res)=>{
+     
+  })
+  #post 用户上传文件服务器端一定要用post接收
+  #/uploadFile是处理文件程序路径
+  #upload.single("mypic");一次上传一个文件
+  #mypic  上传文件的参数名称   如"mypic":1.jpg
+  #req请求对象
+  #req,file保存上传文件信息
+  req.file.size;   上传文件的大小
+  req.file.originalname 上传文件原文件名  11.jpg
+  req.file.mimetype     上传文件类型
+  如：image/jpg image/png text/css  application/javascript
+  req.file.path  上传文件的路径
+
+3.5：小程序-上传文件--客户端html表单[pc/vue..]
+<form action="http://127.0.0.1:3000/uploadFile" method="POST" enctype="multipart/form-data">
+   <input type="submit" value="上传文件"/>
+</form>
+#action    请求服务器程序地址
+#method    请求方式POST
+#enctype   multipart/form-data
+默认表单提交：是将表单中数据转换成字符串发送给服务器程序，但是如果上传的是一个文件【图片，mp3/mp4】就会发送失败
+解决方案就是：将表单数据转换成二进制，任何数据文件都可以传输到服务器端。
+如果将默认的数据格式转换成二进制，在表单中添加一个属性即可如下：enctype="multipart/form-data"
+#file:mypic
+
+3.5：小程序-上传文件--客户端小程序
+-在当前手机中选中一张图片
+  *手机拍照
+  *相册中选择
+  wx.chooseImage({参数列表})
+  参数：#count:1选择图片张图：最多9张
+       #sourceType:["camera","album"]指定图片来源
+       #sucess:fn 选择图片成功
+       (res)=>{
+       res.tempFilePaths   数组：保存选中的图片列表
+       } 
+-将选中的图片上传到服务器
+  *将选中图片上传服务器
+  wx.uploadFile({})
+  url:服务器程序路径
+  filePath:选中图片路径
+  name:上传图片的参数名称mypic
+  header:"Content-Type":"multipart/form-data"
+  success:fn 上传成功
+
+  3.6:小程序-上传文件--学子商城
+  app.js
+  小程序创建组件avatar上传头像
+  1：最大图片不能超过2MB
+  req.file.size 上传文件大小[单位：字节byte]
+  1024byte=1kb
+  1024kb=1mb
+  1024Gb=1Tb
+  实例：不超过2MB      req.file.size/1000/1000>2  -》超过
+  2：必须是图片
+  req.file.mimetype "image"==1
+  req.file.mimetype.indexOf("image")

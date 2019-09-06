@@ -1,0 +1,147 @@
+微信样式文件 wxss
+小程序为css添加两个新功能
+--新单位：rpx(r响应式像素)
+前端开发流程
+(1)设计师ps创建手机小程序效果图--切片(图片)  用的是物理像素
+(2)前端--创建静态网页(html/css/js)          用逻辑像素
+物理像素=逻辑像素*dpr
+dpr  iphone6       2
+     iphone6 plus  3
+     实例：物理像素750=2*375
+解决方案：小程序rpx
+物理像素 750=逻辑像素750rpx
+-@import'引入其他的样式文件'
+
+--轮播图
+<swiper  属性，如：
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+属性：
+autoplay  [boolean]  默认false  是否自动切换
+interval  [number]   5000       自动切换时间间隔
+vertical  [boolean]  false      将轮播图竖着 
+
+小程序--功能：事件
+pc端项目：     屏幕宽度  >970  键盘操作   点击、双击
+移动端项目：    屏幕宽度 <970> 手指        触碰
+
+开发使用组件库
+vue ui    mint-ui   mui   组件库针对移动端开发软件项目
+vue ui    element ui      组件库针对pc端软件项目
+
+事件分类：
+触摸事件--通过原生BOM事件
+①touchstart    当手指触碰到屏幕时发生的时间，不管几个手指
+②touchmove     当手指在屏幕上滑动时连续触发
+③touchend      当手指离开屏幕时触发
+
+原由原生移动事件使用灵活一些，可以使用第三方js库简单完成以上操作
+zepto.js---相当于pc端jquery
+tap        触碰一次
+longtap    长按一次300ms以上
+swipe      滑动
+swipeLeft  左滑
+swipeRight 右滑...
+
+2.5小程序--功能：事件--常见事件
+tab  手指触碰屏幕马上离开
+longtap   手指触碰屏幕300ms离开  旧
+longpress  手指触碰屏幕300ms离开 新
+
+--事件绑定
+(1)支持事件冒泡
+<view bindtap="事件处理函数">tap me</view>
+(2)不支持事件冒泡
+<view catchtap="事件处理函数">tap me</view>
+
+事件---事件对象
+事件对象：当用户完成一个操作，浏览器创建事件对象(事件坐标，触发事件元素，...)
+type：“tap”
+target  触发事件元素
+timeStamp:当组件打开后触发事经过毫秒
+组件间的跳转：如exam01跳转到exam02并且将id当参数携带过去在exam02中显示
+var id=...
+wx.redirectTo({
+ url:'/pages/exam02/exam02?id='+id
+})
+注意：如果一个组件定义在tabbar中就不能使用redirectTo跳转
+取传过来的参数：
+onLoad:function(options){}
+
+
+
+ pages 设置默认首页路径（页面路径列表）
+用于描述当前小程序所有页面路径,这是为了让微信客户端当前你的小程序页面定义在那个目录
+默认配置:(所有的页面路径都要写在这个配置下)
+
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+　　
+
+ 
+window 的配置
+定义小程序多有页面的顶部背景颜色、文字颜色定义等
+　　　　　　　　属性　　　　　　　　　　　　　　　　描述
+
+11
+navigationBarBackgroundColor    导航栏背景颜色  不支持英文单词
+navigationBarTextStyle      导航栏标题颜色  进支持 black / white 两种颜色
+navigationBarTitleText      导航栏标题文字内容
+navigationStyle         导航栏样式 仅支持 default(默认样式) custom(自定义导航栏 只保留右上角胶囊按钮)
+backgroundColor         窗口的背景色
+backgroundTexrStyle     下拉 loading的样式 仅支持 dark/light
+backgroundColorTop      顶部窗口的背景色，仅 iOS 支持
+backgroundColorBottom       底部窗口的背景色，仅 iOS 支持
+enablePullDownRefresh       是否开启当前页面的下拉刷新。
+onReachBottomDistance       页面上拉触底事件触发时距页面底部距离，单位为px。
+pageOrientation         屏幕旋转设置，支持 auto / portrait / landscape
+ 
+ 
+tabBar  设置底部导航 
+
+　　　　属性　　　　　　　描述　　　　　　　　　　　默认
+color　　　　　　　　tab上的文字默认颜色
+selectedColor  　　tab上的文字选中是的颜色
+backgroundColor　　tab的背景色
+borderStyle　　　　tabBar上版块的颜色 　　仅支持 black(黑色)/white(白色)
+position　　　　　　可选值 bottom、topcustom　　　　　　　自定义tabBar
+list　　　　　　　　tab的列表 最少2个  最多5个
+　　list接受的是一个数组
+　　　　属性　　　　　　　　　　描述
+　　　　pagePath　　　　　　页面路径，必须在pages中先定义
+　　　　text　　　　　　 　　tab上按钮文字
+　　　　iconPath　　　　　　图片路径，icon大小限制为40kb 建议尺寸为81px*81px 不支持网络图片
+　　　　selectedIconPath　选中的图片路径。当position 为top是，不显示icon
+
+示例 : "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tab/index",
+        "text": "日志"
+      },
+     {
+        "pagePath": "pages/shopping/index",
+        "text":"设置"
+     }
+    ],
+    "custom": true,
+    "color": "#fff",
+    "selectedColor": "#000000",
+    "backgroundColor": "red"
+  }

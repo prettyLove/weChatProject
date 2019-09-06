@@ -1,0 +1,26 @@
+
+<!-- bindtap和catchtap的区别 -->
+<view bindtap='handle03'>
+   <view bindtap='handle01'>tap me 支持事件冒泡，触发本身和父元素</view>
+   <view catchtap='handle02'>tap me 不支持事件冒泡，仅触发本身</view>
+</view>
+<text>跳转练习</text>
+<view bindtap='jump01'>关闭的跳转 跳到logs组件</view>
+<view bindtap='jump02'>保留的跳转 跳到form_ex组件</view>
+<view bindtap='jump03'>关闭的跳转，但是可以调到tabbar中，跳到shoplist组件</view>
+<text>发送ajax请求</text>
+<view bindtap='getAjax'>
+    点击此处发送请求
+</view>
+<view>
+  <!-- <text>标签跳转：保存跳转新组建 exam01</text> -->
+  <navigator url="/pages/form_ex/form_ex">标签跳转：保留跳转</navigator>
+</view>
+
+ <!-- onLoad: function (options) 中的options是用于传参用，具体如下 -->
+ <text>{{id}}</text>
+ <swiper autoplay='{{true}}'>
+   <swiper-item wx:for="{{list}}" wx:key="index">
+      <image src='{{item.img_url}}' lazy-load='true' bindtap='jump' data-id="{{item.id}}"></image>
+   </swiper-item>
+</swiper>

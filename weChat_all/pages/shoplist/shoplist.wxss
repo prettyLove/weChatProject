@@ -1,0 +1,44 @@
+.index-nva .nav-item image{
+  height: 390rpx;
+  width: 100%;
+}
+.index-nva{
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-item{
+  display: flex;
+  box-sizing: border-box;
+  width: 33.3333%;
+  height: 200rpx;
+  flex-direction: column; /*子项目垂直排列*/
+  justify-content: center; /*子项目水平居中*/
+  align-items: center;     /*子项目垂直居中*/
+  border-right:1px solid #ddd;
+  border-bottom: 1px solid #ddd; 
+}
+/* 去除3 6 9 右边的边线 */
+.index-nva .nav-item:nth-child(3n){
+  border-right:0px;
+}
+.index-nva .nav-item image{
+  width: 40%;
+  height: 40%;
+}
+
+/* 底下两图片样式 */
+ .index-tab{
+  display: flex;
+  justify-content: space-between;
+} 
+
+ .index-tab .left{
+   width: 49.5%;
+   height: 200rpx;
+  box-sizing: border-box;
+  display: flex;
+}  
+.index-tab .left image{
+  width: 100%;
+  height: 100%;
+} 

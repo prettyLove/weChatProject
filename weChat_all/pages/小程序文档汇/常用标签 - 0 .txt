@@ -1,0 +1,61 @@
+文件类型wxml---微信xml文件，是一个严格的xml文件，不同于html比较严格：比如所有的标签要求必须有开始和结束标签如：<text></<text>
+     严格2：所有属性要有单引号或者双引号 eg:<text id="btn1"></text>
+     常见标签  <view></view>           相当于         <div></div>   
+              <text></text>           相当于之前的    <span></span> 
+              <image></image>         相当于         <img>
+              <form></from>           相当于         <from>
+              <navigator></navigator> 相当于      <a>
+              selectable:允许复制
+              decode：特殊字符可以转义
+              <text selectable="true" decode="true"></text> 
+ 小程序--image
+ --image默认大小320*240
+ --图片路径<image src="图片路径">
+ 1：本地绝对路径  /pages/img/1.jpg
+ 2:网络绝对路径   http:127.0.0.1:3000/1.jpg
+ ---图片属性
+ (1)lazy-load懒加载 <image lazy-load='true'></image>  启用懒加载机制
+ (2)mode
+    aspectFill :等比例显示图片以短边为准  主要用这个
+    aspectFit  :等比例显示图片以长边为准
+    标准写法：
+    <image src="http://127.0.0.1/1.jpg" laz-load="true"    mode="aspectFill"></image>
+ 
+ 小程序---text
+ 属性：
+ selectable false 文本内容是否可以选中复制
+ decode     false   文本内容是否转码  如&lt;&gt
+
+小程序--js
+小程序每一个组件对应一个js文件
+Page() 当前组件对象
+Page({data:{},onload:function(){...}})
+小程序与其他程序js区别
+ECMAScript:
+基本类型：number;string;boolean,null,undefined
+引入类型：Object;Date;Math;ExpRge....
+自定义：{}
+--DOM/BOM 没有
+
+--小程序--js显示数据和控制数据
+——-在js获取数据
+var value=this.data.数据属性名
+实例：data:{msg:'hello'}
+onload:function(){
+ console.log(this.data.msg);
+}
+
+--在js中修改数据
+this.setData({
+   nun1=9999.99
+})
+
+--在模板中控制数据
+(1)创建循环
+<view wx:for="{{list}}" wx:key="index">
+  {{item.name}}
+</view>  //list为数组对象  index为下标，思路跟vue是一样的
+ 
+ -->
+<!-- <text>微信小程序</text>
+<textarea>文本域</textarea>

@@ -1,0 +1,74 @@
+组件生命周期
+组件生命周期：一个组件从创建开始到销毁完整过程
+-onLoad  :组件创建成功已经加载到内容，触发一次，次事件中有两件事  
+ ①发送ajax请求  
+ ②获取其他组件传递过来数据(id)，尽量传id
+ ③模拟传参，获取其他组件传递过来的数据(id)options
+  在工具-》编译设置-》新增编译条件-》名称
+-onReady  组件初始化(数据模板绑定)执行一次
+-onShow   显示组件执行(多次)
+-onHide   隐藏组件，前后台切换(多次)
+-onUnload 组件的卸载(讲组件从内存中移出)
+-wx.redirectTo({url:"pages/index/index"})  //组件间的跳转
+比如：life03()--》跳转--》index life03会被卸载  
+
+--特殊事件
+-onPullDownRefresh 用户下拉事件
+#默认小程序是禁止用户下来行为操作
+#修改默认行为 
+(1)全局范围允许所有组件用户都可以下来操作
+   在app.json中的window选项中开启        enablePullDownRefresh:'true'
+(2)只允许当前组件的用户可以下拉操作
+在当前组件的.json文件中设置enablePullDownRefresh:'true'
+-onReachBottom     用户上拉触顶
+-onPageScroll(opt) 用户滑动操作
+ opt.scrollTop     页面垂直方向已经滚动距离
+
+--全局配置文件 app.json
+pages:[]组件列表，默认显示第一个位置组件
+window: 
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff"：顶部导航栏背景色，必须是以16进制，不能使用单词
+    "navigationBarTitleText": "WeChat"：背景字体
+    "navigationBarTextStyle": "black"：背景字体样式,只有黑白
+    #以上的配置项在当前组建中配置文件中也可以使用
+    eg:exam03.json{'navigationBarTitleText:'商城'}
+
+轮播图：
+indicator-dots 是否显示面板指示点
+autoplay       是否自动切换
+interval       切换时间
+duration       滑动动画时长 -->
+如：
+imgUrls在.js文件中的data中存着
+<view class='container'>
+    <swiper class='slider'
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+</view>
+
+<view class='slider'>
+  <swiper autoplay="{{true}}" interval="{{4000}}" indicator-dots="{{indicatorDots}}">
+     <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner1.png"></image>
+     </swiper-item>
+       <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner2.png" ></image>
+      </swiper-item>
+       <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner3.png"></image>
+     </swiper-item>
+            <swiper-item>
+        <image src="http://127.0.0.1:3000/img/banner4.png" ></image>
+     </swiper-item>
+  </swiper>
+</view>

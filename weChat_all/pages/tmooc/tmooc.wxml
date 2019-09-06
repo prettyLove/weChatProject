@@ -1,0 +1,9 @@
+<view class='container'>
+  <view>{{img_url}}</view>
+  <button bindtap='myUpload'   type="primary"
+  size="{{warnSize}}"
+  loading="{{loading}}"
+  plain="{{plain}}"
+  disabled="{{disabled}}"
+  >点击上传</button>
+</view>

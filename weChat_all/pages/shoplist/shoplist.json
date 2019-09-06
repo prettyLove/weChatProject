@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ff5500",
+  "navigationBarTitleText": "学子商城",
+  "navigationBarTextStyle": "white"
+}

@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/tmooc/tmooc",
+    "pages/index/index",
+    "pages/form_ex/form_ex",
+    "pages/shoplist/shoplist",
+    "pages/logs/logs",
+   
+    "pages/home/home"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f66",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/img/home.png",
+        "selectedIconPath": "pages/img/home-active.png"
+      },
+      {
+        "pagePath": "pages/shoplist/shoplist",
+        "text": "学子商城",
+        "iconPath": "pages/img/message.png",
+        "selectedIconPath": "pages/img/message-active.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "联系",
+        "iconPath": "pages/img/contact.png",
+        "selectedIconPath": "pages/img/contact-active.png"
+      },
+      {
+        "pagePath": "pages/tmooc/tmooc",
+        "text": "我的",
+        "iconPath": "pages/img/contact.png",
+        "selectedIconPath": "pages/img/profile-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,32 @@
+
+<!-- 学子轮播图轮播图 -->
+<swiper
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}" indicator-color="white" indicator-active-color="rgb(0,177,255)"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 四个按钮，动态控制轮播图的指示器点的显示，是否自动播放或者手动播放，播放的时间间隔，动画滑动的时长 -->
+<button bindtap="changeIndicatorDots">indicator-dots</button>
+<button bindtap="changeAutoplay">autoplay</button>
+<slider bindchange="intervalChange" show-value min="500" max="2000" />
+<slider bindchange="durationChange" show-value min="1000" max="10000" />
+
+<!-- 九宫格 -->
+<view class='index-nva'>
+   <view class='nav-item' wx:for="{{nvaList}}" wx:key="index">
+      <image src="{{item.img_url}}" lazy-load='true' mode='aspectFill'></image>
+      <text>{{item.title}}</text>
+   </view>
+</view>
+<view class='index-tab'>
+    <view class='left' wx:for="{{tablist}}" wx:key="index">
+        <image src='{{item.img_url}}' laze-lazy-load='true'></image>
+    </view>
+</view>
